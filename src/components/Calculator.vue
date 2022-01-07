@@ -16,15 +16,19 @@
             
         </div>
 
-        <div v-if="history.length">
-            <h3>history: </h3>
+        <transition name="fade">
+            <div v-if="history.length">
+                <h3>history: </h3>
 
-            <div v-for="(item, index) in history" :key="index + ' history'" class="history">
-                <p>
-                    {{ item.n1 }} {{ item.operator}} {{ item.n2 }} = {{ item.result }}
-                </p>    
+                <transition-group name="slide-fade">
+                    <div v-for="(item, index) in history" :key="index + ' history'" class="history">
+                            
+                        {{ item.n1 }} {{ item.operator}} {{ item.n2 }} = {{ item.result }}
+                        
+                    </div>
+                </transition-group>
             </div>
-        </div>
+        </transition>
     </div>
 </template>
 
@@ -103,7 +107,7 @@ export default {
                 this.result = num1 * num2;
             }
             else if (this.operator === "/"){
-                if (num1 == 0){
+                if (num2 == 0){
                     throw "MATH ERROR: Cannot divide by 0";
                 }
                 this.result = num1 / num2;
@@ -142,7 +146,25 @@ export default {
     margin: 0;
     padding: 15px 0;
 }
-.history p{
-    margin: 10px;
+
+
+/* Enter and leave Transitions */
+.slide-fade-enter-active {
+  transition: all .3s ease;
+}
+.slide-fade-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to
+/* .slide-fade-leave-active below version 2.1.8 */ {
+  transform: translateX(10px);
+  opacity: 0;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>

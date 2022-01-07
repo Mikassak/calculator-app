@@ -1,24 +1,7 @@
-# calculator
+# Calculator task
+Hello, here is my Calculator task :-)
 
-## Project setup
-```
-npm install
-```
+Basic calculator for operating with two numbers.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+Thank you for your time and looking forward for your feedback. 
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
